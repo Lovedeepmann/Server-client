@@ -34,6 +34,8 @@ class ClientData(socketserver.StreamRequestHandler):
             self.wfile.write(email.decode('utf-8').encode('utf-8'))
             # Name validation for at least four chacters
             Name = self.rfile.readline()
+            if not Name:
+                break
             def isNamevalid(Name):
                 if len(Name) < 4:
                     reason = ('Name must be greater than 4 characters')
